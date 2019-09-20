@@ -2,6 +2,7 @@ utils/EMF_Creator$DbSelector$2.class
 utils/EMF_Creator.class
 entity/Semester_.class
 utils/EMF_Creator$Strategy$3.class
+mappers/StudentInfo.class
 utils/EMF_Creator$Strategy.class
 utils/EMF_Creator$DbSelector$1.class
 utils/EMF_Creator$DbSelector.class

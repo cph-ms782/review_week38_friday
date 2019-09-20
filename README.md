@@ -38,7 +38,9 @@ C) Create (preferable in a facade-class)  Dynamic Queries (or if possible, use a
 8. Find (using JPQL)  the total number of students, for a semester given the semester name as a parameter.  
 9. Find (using JPQL) the total number of students in all semesters.
 10. Find (using JPQL) the teacher(s) who teaches on most semesters.
-11. Often (as in almost always) we don’t want a result that matches an Entity class, but a result that matches a specific customer requirement for a specific request.
+11. Often (as in almost always) we don’t want a result that matches an Entity class, but a result that matches a specific customer requirement for a specific request.  
+
+
 12. Create a method, similar to the one above, but which returns a single StudentInfo, given a students id as sketched below:
 StudentInfo getStudentInfo(long id)
 

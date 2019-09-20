@@ -3,11 +3,13 @@ package facades;
 import entity.Semester;
 import entity.Student;
 import entity.Teacher;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import mappers.StudentInfo;
 import utils.EMF_Creator;
 
 /**
@@ -162,6 +164,46 @@ public class TheFacade {
         }
     }
 
+    public List<StudentInfo> getStudentsInfo() {
+        EntityManager em = emf.createEntityManager();
+        List<StudentInfo> studentInfoList = new ArrayList();
+        try {
+            TypedQuery<Student> query
+                    = em.createQuery("SELECT s FROM Student s where s.semester IS NOT NULL",
+                            Student.class);
+            for (Student st : query.getResultList()) {
+                studentInfoList.add(new StudentInfo(
+                        st.getFirstname(), st.getLastname(), 
+                        st.getId(), 
+                        st.getSemester().getName(), 
+                        st.getSemester().getDescription()));
+            }
+            return studentInfoList;
+        } finally {
+            em.close();
+        }
+    }
+
+    public StudentInfo getStudentInfo(int id) {
+        EntityManager em = emf.createEntityManager();
+        List<StudentInfo> studentInfoList = new ArrayList();
+        try {
+            TypedQuery<Student> query
+                    = em.createQuery("SELECT s FROM Student s where s.semester IS NOT NULL AND s.id = :id",
+                            Student.class).setParameter("id", id);
+            for (Student st : query.getResultList()) {
+                studentInfoList.add(new StudentInfo(
+                        st.getFirstname(), st.getLastname(), 
+                        st.getId(), 
+                        st.getSemester().getName(), 
+                        st.getSemester().getDescription()));
+            }
+            return studentInfoList.get(0);
+        } finally {
+            em.close();
+        }
+    }
+
     private static void printingStudent(Student stud) {
         System.out.println(
                 "#" + stud.getId()
@@ -238,9 +280,20 @@ public class TheFacade {
         // Find (using JPQL) the teacher(s) who teaches on most semesters.
         System.out.println("\nFind (using JPQL) the teacher(s) who teaches on "
                 + "most semesters:");
-        System.out.println("Teacher: " 
+        System.out.println("Teacher: "
                 + facade.findTeacherWithMostSemesters().getFirstname() + " "
                 + facade.findTeacherWithMostSemesters().getLastname());
+        
+        // 11. Often (as in almost always) we don’t want a result that matches 
+        // an Entity class, but a result that matches a specific customer
+        // requirement for a specific request.
+        System.out.println("Printing studentinfo on all students with a semester:");
+        System.out.println(facade.getStudentsInfo());
+        
+        // 12. Create a method, similar to the one above, but which returns a 
+        // single StudentInfo, given a students id as sketched below:
+        System.out.println("\n\nPrinting single studentinfo from student 4");
+        System.out.println(facade.getStudentInfo(4));
         
     }
 }
