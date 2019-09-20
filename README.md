@@ -34,6 +34,7 @@ _**Solutions are in main method of TheFacade.java**_
 4. [Assign a new student to a semester (given the student-id and semester-id)](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L238)  
 
 5. [Had the student above already been assigned to a semester he would suddenly be a member of two semesters, but still only have one reference back to the newest assigned semester. Fix this problem, preferably without losing historical information.](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L245)  
+[Is stopped by this in Student entity](https://github.com/cph-ms782/review_week38_friday/blob/448652bcd7a74d9eab0e48deb71d90974bebcd8e/ORM-JPQL/src/main/java/entity/Student.java#L82)
 
 6. [Find (using JPQL) all Students in the system with the last name And](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L256)  
 
