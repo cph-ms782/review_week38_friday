@@ -1,5 +1,5 @@
 # Review week38 friday  
-## ORM + JPQL
+## [ORM + JPQL](https://docs.google.com/document/d/1mZ90qI9Itic0scu0D4kXwj4YEvlE7dAm9Js9nDnAtZk/edit#)
 ### General part
 
  * Explain the rationale behind the topic Object Relational Mapping and the Pros and Cons in using a ORM.  
@@ -15,6 +15,7 @@ _****_
 
 ### Practical part
 The script created four tables (why FOUR)  
+_**Semester og Teacher tables have a many to many relations. The DB needs a join table for that. That's the 4. table.**_  
 
  
  A) Use NetBeans to create a set of matching Entity Classes (see hints at the end). Make sure you understand what was created, and that you understand how classes and tables are related (almost a guaranteed discussion topic for the exam)  
