@@ -79,7 +79,10 @@ public class Student implements Serializable {
     }
 
     public void setSemester(Semester semester) {
-        this.semester = semester;
+        if (semester != null) {
+            System.out.println("Student already has a semester!");
+            this.semester = semester;
+        }
     }
 
     @Override
@@ -106,5 +109,5 @@ public class Student implements Serializable {
     public String toString() {
         return "entity.Student[ id=" + id + " ]";
     }
-    
+
 }
