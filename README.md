@@ -29,7 +29,7 @@ _**Solutions are in main method of TheFacade.java**_
 
 2. [Find all Students in the System with the first name Anders](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L225)  
 
-3. [Insert a new Student into the system]https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L231()  
+3. [Insert a new Student into the system](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L231)  
 
 4. [Assign a new student to a semester (given the student-id and semester-id)](https://github.com/cph-ms782/review_week38_friday/blob/85d6c4bc6e06221f175f506afa35a54db5da9036/ORM-JPQL/src/main/java/facades/TheFacade.java#L238)  
 
