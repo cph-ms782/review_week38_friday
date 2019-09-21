@@ -166,19 +166,19 @@ public class TheFacade {
 
     public List<StudentInfo> getStudentsInfo() {
         EntityManager em = emf.createEntityManager();
-        List<StudentInfo> studentInfoList = new ArrayList();
+//        List<StudentInfo> studentInfoList = new ArrayList();
         try {
-            TypedQuery<Student> query
-                    = em.createQuery("SELECT s FROM Student s where s.semester IS NOT NULL",
-                            Student.class);
-            for (Student st : query.getResultList()) {
-                studentInfoList.add(new StudentInfo(
-                        st.getFirstname(), st.getLastname(), 
-                        st.getId(), 
-                        st.getSemester().getName(), 
-                        st.getSemester().getDescription()));
-            }
-            return studentInfoList;
+            TypedQuery<StudentInfo> query
+                    = em.createQuery("SELECT NEW mappers.StudentInfo(s.firstname, s.lastname, s.id, s.semester.name, s.semester.description) FROM Student s where s.semester IS NOT NULL",
+                            StudentInfo.class);
+//            for (Student st : query.getResultList()) {
+//                studentInfoList.add(new StudentInfo(
+//                        st.getFirstname(), st.getLastname(), 
+//                        st.getId(), 
+//                        st.getSemester().getName(), 
+//                        st.getSemester().getDescription()));
+//            }
+            return query.getResultList();
         } finally {
             em.close();
         }
@@ -186,19 +186,19 @@ public class TheFacade {
 
     public StudentInfo getStudentInfo(int id) {
         EntityManager em = emf.createEntityManager();
-        List<StudentInfo> studentInfoList = new ArrayList();
+//        List<StudentInfo> studentInfoList = new ArrayList();
         try {
-            TypedQuery<Student> query
-                    = em.createQuery("SELECT s FROM Student s where s.semester IS NOT NULL AND s.id = :id",
-                            Student.class).setParameter("id", id);
-            for (Student st : query.getResultList()) {
-                studentInfoList.add(new StudentInfo(
-                        st.getFirstname(), st.getLastname(), 
-                        st.getId(), 
-                        st.getSemester().getName(), 
-                        st.getSemester().getDescription()));
-            }
-            return studentInfoList.get(0);
+            Query query
+                    = em.createQuery("SELECT NEW mappers.StudentInfo(s.firstname, s.lastname, s.id, s.semester.name, s.semester.description) FROM Student s WHERE s.semester IS NOT NULL AND s.id = :id",
+                            StudentInfo.class).setParameter("id", id);
+//            for (Student st : query.getResultList()) {
+//                studentInfoList.add(new StudentInfo(
+//                        st.getFirstname(), st.getLastname(), 
+//                        st.getId(), 
+//                        st.getSemester().getName(), 
+//                        st.getSemester().getDescription()));
+//            }
+            return (StudentInfo) query.getSingleResult();
         } finally {
             em.close();
         }
